@@ -21,17 +21,24 @@ def opcao_deposito(valor_em_conta,valor_deposito):
     valor_movimentado = valor_em_conta + valor_deposito
     return valor_movimentado
 
-def extrato(**kwargs):
+def extrato(valor_em_conta, valor_deposito, valor_saque):
     print(f'~~~~ EXTRATO BANCARIO ~~~~')
-    print(F'Valor Atual em Conta : R${valor_em_conta}\nValor de Ultima Movimentação de DEPÓSITO - R${valor_deposito}\nValor de Ultima Movimentação de SAQUE - R${valor_saque}')
+    print(f'Valor Atual em Conta: R${valor_em_conta}')
+    print(f'Último Depósito: R${valor_deposito}')
+    print(f'Último Saque: R${valor_saque}')
     criar_linha()
 
-while opcao != 4:
 
+
+
+while opcao != 4:
     sleep(2)
     print('[1] Sacar\n[2] Depositar\n[3] Extrato\n[4] Sair')
     opcao = int(input('Escolha uma opção do painel : '))
     criar_linha()
+    if opcao > 4 or opcao < 1:
+        print('Opção Invalida. Favor Digitar um dos Números Disponiveis Como Opção Na Tela')
+        criar_linha()
     if opcao == 1:
         valor_saque = int(input('Digite o valor que você gostaria de sacar: R$'))
         if valor_em_conta >= valor_saque:
@@ -56,9 +63,6 @@ while opcao != 4:
         criar_linha()
     if opcao == 3:
         extrato(valor_em_conta = valor_em_conta ,valor_deposito = valor_deposito,valor_saque = valor_saque)
-    if opcao > 4 or opcao < 1 :
-        print('Opção Invalida. Favor Digitar um dos Números Disponiveis Como Opção Na Tela')
-        criar_linha()
 
 
 agradecimento()
